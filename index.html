@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Tone.js Player</title>
+  <script src="https://unpkg.com/tone@15.0.4/build/Tone.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="gl-player" class="gl-player player">
+  <ol id="playalongs" class="playlist">
+    <li class="current-item">
+      <button data-audio_title="PLZ" data-tempo="112" data-duration="17.229" data-looped="true" data-melody="PLZ_melody" data-bass="PLZ_bass" data-drums="PLZ_drums" data-click="PLZ_click" data-count_in="PLZ_count-in" class="current-audio">PLZ <span class="audio-tempo">112 BPM</span><i class="dna-icon-repeat loop-icon"></i></button>
+    </li>
+    <li>
+      <button data-audio_title="PGZ – 01" data-tempo="98" data-duration="19.658" data-looped="true" data-bass="PGZ_01_bass" data-drums="PGZ_01_drums" data-perc="PGZ_perc" data-click="PGZ_click" data-count_in="PGZ_count-in">
+        PGZ – 01 <span class="audio-tempo">98 BPM</span><i class="dna-icon-repeat loop-icon"></i>
+      </button>
+    </li>
+    <li>
+      <button data-audio_title="PGZ – 01-05" data-tempo="98" data-duration="102.937" data-bass="PGZ_01-05_bass" data-drums="PGZ_01-05_drums" data-perc="PGZ_01-05_perc" data-click="PGZ_01-05_click">PGZ – 01-05 <span class="audio-tempo">98 BPM</span><span class="audio-length">01:42</span></button>
+    </li>
+  </ol>
+  <div class="controls">
+    <button class="back">Back</button>
+    <button class="play">Play</button>
+    <button class="forward">Forward</button>
+    <span class="time">00:00</span>
+    <input type="range" class="scrub" min="0" max="100" value="0" />
+    <span class="bpm">BPM: <span class="bpm-value">0</span></span>
+    <input type="range" class="tempo" min="50" max="150" value="100" />
+  </div>
+  <div class="track-volumes"></div>
+</div>
+<script src="js/player.js"></script>
+</body>
+</html>
