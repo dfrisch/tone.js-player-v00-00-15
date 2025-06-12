@@ -1,0 +1,21 @@
+.gl-player {
+  font-family: sans-serif;
+  margin: 1rem;
+}
+.controls button {
+  margin-right: 0.5rem;
+}
+.controls input[type="range"] {
+  vertical-align: middle;
+}
+.track-volumes {
+  margin-top: 1rem;
+}
+.track-volume {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.track-volume label {
+  flex: 1;
+}
