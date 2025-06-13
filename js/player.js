@@ -12,11 +12,11 @@ class MultiTrackSong {
     const ignore = ['audio_title', 'tempo', 'duration', 'looped', 'count_in'];
     Object.keys(button.dataset).forEach(key => {
       if (!ignore.includes(key)) {
-        this.tracks.push({ name: key, url: button.dataset[key] + '.mp3' });
+        this.tracks.push({ name: key, url: '/audio/' + button.dataset[key] + '.mp3' });
       }
     });
     if (button.dataset.count_in) {
-      this.countIn = { url: button.dataset.count_in + '.mp3' };
+      this.countIn = { url: '/audio/' + button.dataset.count_in + '.mp3' };
     }
   }
 }
@@ -131,12 +131,12 @@ class GLPlayer {
 
     if (song.looped) {
       const loopTime = song.duration * tempoFactor + startOffset;
-      Tone.Transport.scheduleRepeat(() => {
-        this.players.forEach(p => p.player.start(startOffset));
+      Tone.Transport.scheduleRepeat((time) => {
+        this.players.forEach(p => p.player.start(time + startOffset));
         if (this.countInPlayer) {
-          this.countInPlayer.start(0);
+          this.countInPlayer.start(time);
         }
-      }, loopTime);
+      }, loopTime, startOffset);
     }
 
     Tone.Transport.start();
