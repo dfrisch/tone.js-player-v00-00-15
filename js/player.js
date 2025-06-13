@@ -61,7 +61,7 @@ class GLPlayer {
     const volumeNodes = [];
     this.players = [];
     if (song.countIn) {
-      const player = new Tone.Player({ url: song.countIn.url, loop: song.looped }).toDestination();
+      const player = new Tone.Player({ url: song.countIn.url, loop: false }).toDestination();
       player.autostart = false;
       this.countInPlayer = player;
     } else {
@@ -130,13 +130,10 @@ class GLPlayer {
     });
 
     if (song.looped) {
-      const loopTime = song.duration * tempoFactor + startOffset;
+      const loopTime = song.duration * tempoFactor;
       Tone.Transport.scheduleRepeat((time) => {
-        this.players.forEach(p => p.player.start(time + startOffset));
-        if (this.countInPlayer) {
-          this.countInPlayer.start(time);
-        }
-      }, loopTime, startOffset);
+        this.players.forEach(p => p.player.start(time));
+      }, loopTime, startOffset + loopTime);
     }
 
     Tone.Transport.start();
