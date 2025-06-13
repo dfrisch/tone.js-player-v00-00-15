@@ -129,7 +129,7 @@ class GLPlayer {
       p.player.start(startOffset);
     });
 
-    if (song.looped) {
+if (song.looped) {
       const loopTime = song.duration * tempoFactor + startOffset;
       Tone.Transport.scheduleRepeat((time) => {
         this.players.forEach(p => p.player.start(time + startOffset));
